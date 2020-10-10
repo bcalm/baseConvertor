@@ -10,7 +10,9 @@ class Input extends React.Component {
     const value = +event.target.value;
     const convertedValue =
       typeof value === 'number' ? parseInt(value, this.props.base) : 0;
-    this.props.onChange(convertedValue);
+    if (!isNaN(convertedValue)) {
+      this.props.onChange(convertedValue);
+    }
   }
 
   render() {
