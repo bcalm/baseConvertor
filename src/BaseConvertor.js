@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from './Input';
+import BaseInput from './BaseInput';
 
 class BaseConvertor extends React.Component {
   constructor(props) {
@@ -13,18 +13,13 @@ class BaseConvertor extends React.Component {
   }
 
   render() {
-    const bases = this.props.requiredBases.map((base) => {
-      return (
-        <div key={base} style={{ display: 'flex', padding: '10px' }}>
-          <p>Base{base}: &nbsp;</p>
-          <Input
-            base={base}
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </div>
-      );
-    });
+    const bases = this.props.requiredBases.map((base) => (
+      <BaseInput
+        base={base}
+        value={this.state.value}
+        onChange={this.handleChange}
+      />
+    ));
     return <div>{bases}</div>;
   }
 }
